@@ -28,27 +28,29 @@ class Post
         $this->excerpt = $excerpt;
         $this->date = $date;
         $this->body = $body;
+        $this->slug = $slug;
     }
 
     public static function all()
     {
-        return collect(File::files(resource_path("posts")))
-            ->map(fn($file) => YamlFrontMatter::parseFile($file))
-            ->map(fn($document) => new Post(
-                $document->title,
-                $document->excerpt,
-                $document->date,
-                $document->body(),
-                $document->slug
-            ));
+        return cache()->rememberForever('posts.all', function () {
+            return collect(File::files(resource_path("posts")))
+                ->map(fn($file) => YamlFrontMatter::parseFile($file))
+                ->map(fn($document) => new Post(
+                    $document->title,
+                    $document->excerpt,
+                    $document->date,
+                    $document->body(),
+                    $document->slug
+                ))
+                ->sortByDesc('date');
+        });
 
     }
-    #[NoReturn] public static function find($slug)
+    public static function find($slug)
     {
         // of all the blog posts, find the one with a slug that matches the one that was requested
-        $posts = static::all();
-
-        dd($posts->firstwhere('slug', $slug));
+        return static::all()->firstwhere('slug', $slug);
     }
 }
 
