@@ -1,0 +1,132 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+body {
+    display: block;
+    margin: 8px;
+    background: #f0f0f0;
+}
+button {
+    border: gainsboro;
+    cursor: pointer;
+    appearance: none;
+    background-color: #d6d9dd;
+}
+div {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1em;
+    text-align: center;
+
+}
+button {
+    letter-spacing: 2px;
+    border-color: #33b67e;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 12px;
+    text-decoration: none;
+    width: 250px;
+    height: 45px;
+    background-color: #33b67e;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+
+}
+form {
+    width: 32em;
+    margin: 2em auto;
+    background: white;
+    padding: 1em;
+    border-radius: 0;
+}
+
+#spotify {
+    background-color: #33b67e;
+    color: #ffffff;
+    height: 1.75em;
+    float: left;
+}
+
+input[type='text'] {
+    padding: 10px;
+    outline: none;
+    font-size: 24px;
+    border-width: 1px;
+    border-radius: 20px;
+    text-decoration-color: #dadce0;
+    margin: 1em;
+    border-color: #eaecee;
+    border-style: solid;
+    height: 10px;
+    width: 350px;
+    color: black;
+}
+.header{
+    font-size: 30px;
+    color: black;
+    font-family: Arial, serif;
+    margin: 1em;
+}
+.text {
+    font-size: 40px;
+    color: black;
+    font-family: Arial, serif;
+}
+button[class='try_again'] {
+    letter-spacing: 2px;
+    border-color: #0074e8;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 20px;
+    padding: 12px;
+    text-decoration: none;
+    width: 150px;
+    height: 45px;
+    background-color: #0074e8;
+    text-align: center;
+    cursor: pointer;
+    color: white;
+}
+.success{
+    background-color: #33b67e;
+    width: 300px;
+    height: 35px;
+    border-style: solid;
+    border-radius: 20px;
+    font-family: Arial, serif;
+    color: white;
+    align-content: center;
+}
+#try_again {
+    background-color: #0074e8;
+    color: #ffffff;
+    height: 1.75em;
+    float: left;
+}
+#cm {
+    background-color: white;
+    color: #ffffff;
+    height: 1.75em;
+    float: left;
+}
+#failed {
+    background-color: white;
+    color: #ffffff;
+    height: 1.50em;
+    float: left;
+}
+#success {
+    background-color: #33b67e;
+    color: #ffffff;
+    height: 1.75em;
+    float: left;
+}
+.text-danger{
+    color: red;
+    font-family: Arial, serif;
+}

@@ -4,7 +4,9 @@ use App\Models\Post;
 use Illuminate\Support\Facades\File;
 use Illuminate\Support\Facades\Route;
 use Spatie\YamlFrontMatter\YamlFrontMatter;
-
+use App\Http\Controllers\AuthenticationController;
+use App\Http\Controllers\RedirectionController;
+use Illuminate\Support\Facades\Redirect;
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -16,23 +18,20 @@ use Spatie\YamlFrontMatter\YamlFrontMatter;
 |
 */
 
-//    $files = File::files(resource_path("posts"));
-//    $documents = [];
-//    foreach ($files as $file) {
-//        $documents = YamlFrontMatter::parseFile($file);
-//    }
-//  ddd($documents);
-//    $document = YamlFrontMatter::parseFile(
-//        resource_path('posts/my-fourth-post.html')
-//    );
-//
-//    ddd($document->date);
-//    return view('posts', [
-//        'posts' => Post::all()
+//Route::controller(\App\Http\Controllers\AuthenticationController::class)->group(function() {
+//    Route::get('auth', 'show');
+////    Route::get('auth','index');
+//    Route::post('auth', 'submitData')->name('submit.data');
+//});
+Route::get('auth', [App\Http\Controllers\AuthenticationController::class, 'index'])->name('users.index');
+Route::post('auth', [App\Http\Controllers\AuthenticationController::class, 'store'])->name('users.store');
+
+Route::controller(\App\Http\Controllers\RedirectionController::class)->group(function () {
+    Route::get('redirection/success', 'successPage')->name('success.page');
+    Route::get('redirection/failed', 'failedPage')->name('failed.page');
+});
 
 
-
-//    ]);
 Route::get('/', function () {
     return view('posts', [
         'posts' => Post::all()
@@ -46,40 +45,3 @@ Route::get('posts/{post}', function ($slug) {
     ]);
 })->where('post', '[A-z\-]+');
 
-
-//    $posts = array_map(function ($file) {
-//        $document = YamlFrontMatter::parseFile($file);
-//
-//        return new Post(
-//            $document->title,
-//            $document->excerpt,
-//            $document->date,
-//            $document->body(),
-//            $document->slug
-//        );
-//    }, $files);
-//
-
-
-//    $posts = array_map(function ($file) {
-//        $document = YamlFrontMatter::parseFile($file);
-//        return new Post(
-//            $document->title,
-//            $document->excerpt,
-//            $document->date,
-//            $document->body(),
-//            $document->slug
-//        );
-//    });
-
-//    ddd($posts[0]->title);
-
-//collect(File::files(resource_path("posts")))
-//    ->map(fn($file) => YamlFrontMatter::parseFile($file))
-//    ->map(fn($document) => new Post(
-//        $document->title,
-//        $document->excerpt,
-//        $document->date,
-//        $document->body(),
-//        $document->slug
-//    ));

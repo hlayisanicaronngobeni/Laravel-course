@@ -9,7 +9,7 @@
         <h1><?= $post->title; ?></h1>
 
         <div>
-            <?= $post->body; ?>
+            {{ $post->body}}
         </div>
     </article>
 
